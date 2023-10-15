@@ -1,0 +1,14 @@
+//curl -X GET localhost:8080/allBookings
+
+//curl -X POST localhost:8080/book -H 'Content-type:application/json' -d
+
+{
+  "idUser": 1,
+  "name": "Sam",
+  "rooms": [{"name":"A","price": 5.99},
+            {"name":"B","price": 6.99}
+  ]
+}
+
+
+
