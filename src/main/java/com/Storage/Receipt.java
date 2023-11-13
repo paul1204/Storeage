@@ -1,27 +1,43 @@
 package com.Storage;
-import com.Storage.Room;
-import com.Utilites.handTruck;
+import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Arrays;
+
+@Entity
 public class Receipt {
 
-    int uid;
-    Room[] r;
-    String data;
-    handTruck truck;
 
+    private @Id
+    @GeneratedValue Long uid;
+//Long uid;
+@OneToMany(cascade = CascadeType.ALL)
+ private Room[] r;
+  private  String data;
+  //private  handTruck truck;
+  private Long userId;
 
-    public Receipt(int uid, Room[] r){
-        this.uid = uid;
+  double cost;
+
+    public Receipt(Long idUser, Room[] r , double cost){
+        this.userId = idUser;
         this.r = r;
+        this.cost = cost;
         //this.truck = t;
     }
 
     public Receipt generateReceipt(){
-        toString(uid, r);
-        return null;
+        //toString();
+        return this;
     }
 
-    void toString(int uid, Room[] r){
-
+    @Override
+    public String toString() {
+        return "Receipt{" +
+                "uid=" + uid +
+                ", r=" + Arrays.toString(r) +
+                ", data='" + data + '\'' +
+                ", userId=" + userId +
+                '}';
     }
 }

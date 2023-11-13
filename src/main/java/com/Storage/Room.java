@@ -2,19 +2,24 @@ package com.Storage;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Room {
 
 
-    private @Id
-    @GeneratedValue Long id;
+    private @Id Long id;
     String name;
     double price;
 
 
-    Room(){}
+    public Room(){}
+    public Room(Long id, String name, double price){
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
 
     public String getName() {
         return this.name;
@@ -32,9 +37,11 @@ public class Room {
         this.price = price;
     }
 
-    Room(String n, double p){
-        this.name = n;
-        this.price = p;
+    public Long getId() {
+        return this.id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

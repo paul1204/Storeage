@@ -17,7 +17,7 @@ public class Client {
     //Room<Room> rooms;
 
 
- //   Room[] rooms;
+
   private  String phone;
    private String firstName;
     private String lastName;
