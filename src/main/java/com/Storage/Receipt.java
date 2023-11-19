@@ -11,17 +11,20 @@ public class Receipt {
     private @Id
     @GeneratedValue Long uid;
 //Long uid;
-@OneToMany(cascade = CascadeType.ALL)
- private Room[] r;
+//@OneToMany(cascade = CascadeType.ALL)
+ //private Room[] r;
   private  String data;
   //private  handTruck truck;
   private Long userId;
 
+  Long roomId;
+
   double cost;
 
-    public Receipt(Long idUser, Room[] r , double cost){
+    public Receipt(Long idUser, Long roomId , double cost){
         this.userId = idUser;
-        this.r = r;
+       // this.r = r;
+        this.roomId = roomId;
         this.cost = cost;
         //this.truck = t;
     }
@@ -31,11 +34,27 @@ public class Receipt {
         return this;
     }
 
+    public Long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
     @Override
     public String toString() {
         return "Receipt{" +
                 "uid=" + uid +
-                ", r=" + Arrays.toString(r) +
+                ", r=" + this.roomId +
                 ", data='" + data + '\'' +
                 ", userId=" + userId +
                 '}';

@@ -14,29 +14,27 @@ public class Request {
     Long idUser;
 
 
-    @Autowired
-    @OneToMany(cascade = CascadeType.MERGE)
+  //  @Autowired
+  //  @OneToMany(cascade = CascadeType.MERGE)
     //@OneToOne
-    Room[] rooms;
+    //Room[] rooms;
+        Long roomId;
+
 
     @OneToOne
     Receipt receipt;
 
     double cost;
     Request(){}
-    public Request(Long id, Long idUser, Room[] rooms, double cost) {
+    public Request(Long id, Long idUser, Long roomID, double cost) {
         this.idd = id;
         this.idUser = idUser;
-        this.rooms = rooms;
+        //this.rooms = rooms;
+        this.roomId  = roomId;
         this.cost = cost;
     }
-    public Room[] getRooms() {
-        return rooms;
-    }
 
-    public void setRooms(Room[] rooms) {
-        this.rooms = rooms;
-    }
+
 
     public Receipt getReceipt() {
         return receipt;
@@ -65,7 +63,7 @@ public class Request {
 
 
     public Receipt generateReceipt(){
-        return receipt = new Receipt(this.idUser, this.rooms, this.cost);
+        return receipt = new Receipt(this.idUser, this.roomId, this.cost);
     }
     public Long getId() {
         return idd;
@@ -91,12 +89,22 @@ public class Request {
 //    public void setRooms(Room[] rooms) {
 //        //this.rooms = rooms;
 //    }
-@Override
+
+
+    public Long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
+    }
+
+    @Override
 public String toString() {
     return "Request{" +
             "id=" + this.idd +
             ", idUser=" + this.idUser +
-            ", rooms=" + Arrays.toString(rooms) +
+            ", roomId=" + this.roomId +
             ", receipt=" + this.receipt +
             ", cost=" + this.cost +
             '}';
