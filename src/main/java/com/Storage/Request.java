@@ -51,11 +51,6 @@ public class Request {
         this.cost = cost;
     }
 
-
-
-    public Receipt generateReceipt(){
-        return receipt = new Receipt(this.idUser, this.roomId, this.cost);
-    }
     public Long getId() {
         return idd;
     }
@@ -63,11 +58,6 @@ public class Request {
     public Long getIdUser() {
         return idUser;
     }
-
-//    public Room[] getRooms() {
-//        return
-//                null;
-//    }
 
     public void setId(Long id) {
         this.idd = id;
@@ -77,11 +67,6 @@ public class Request {
         this.idUser = idUser;
     }
 
-//    public void setRooms(Room[] rooms) {
-//        //this.rooms = rooms;
-//    }
-
-
     public Long[] getRoomId() {
         return roomId;
     }
@@ -89,7 +74,9 @@ public class Request {
     public void setRoomId(Long[] roomId) {
         this.roomId = roomId;
     }
-
+    public Receipt generateReceipt(){
+        return receipt = new Receipt(this.idUser, this.roomId, this.cost);
+    }
     @Override
 public String toString() {
     return "Request{" +
