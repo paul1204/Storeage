@@ -8,25 +8,16 @@ import java.util.Arrays;
 @Entity
 public class Request {
 
-
     private @Id Long idd;
-
     Long idUser;
-
-
-  //  @Autowired
-  //  @OneToMany(cascade = CascadeType.MERGE)
-    //@OneToOne
-    //Room[] rooms;
-        Long roomId;
-
+    Long[] roomId;
 
     @OneToOne
     Receipt receipt;
 
     double cost;
     Request(){}
-    public Request(Long id, Long idUser, Long roomID, double cost) {
+    public Request(Long id, Long idUser, Long[] roomID, double cost) {
         this.idd = id;
         this.idUser = idUser;
         //this.rooms = rooms;
@@ -91,11 +82,11 @@ public class Request {
 //    }
 
 
-    public Long getRoomId() {
+    public Long[] getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(Long roomId) {
+    public void setRoomId(Long[] roomId) {
         this.roomId = roomId;
     }
 
@@ -104,7 +95,7 @@ public String toString() {
     return "Request{" +
             "id=" + this.idd +
             ", idUser=" + this.idUser +
-            ", roomId=" + this.roomId +
+            ", roomId=" + Arrays.toString(this.roomId) +
             ", receipt=" + this.receipt +
             ", cost=" + this.cost +
             '}';

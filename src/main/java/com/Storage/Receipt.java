@@ -6,22 +6,13 @@ import java.util.Arrays;
 
 @Entity
 public class Receipt {
+    private @Id @GeneratedValue Long uid;
+    private  String data;
+    private Long userId;
+    Long[] roomId;
+    double cost;
 
-
-    private @Id
-    @GeneratedValue Long uid;
-//Long uid;
-//@OneToMany(cascade = CascadeType.ALL)
- //private Room[] r;
-  private  String data;
-  //private  handTruck truck;
-  private Long userId;
-
-  Long roomId;
-
-  double cost;
-
-    public Receipt(Long idUser, Long roomId , double cost){
+    public Receipt(Long idUser, Long[] roomId , double cost){
         this.userId = idUser;
        // this.r = r;
         this.roomId = roomId;
@@ -34,11 +25,11 @@ public class Receipt {
         return this;
     }
 
-    public Long getRoomId() {
+    public Long[] getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(Long roomId) {
+    public void setRoomId(Long[] roomId) {
         this.roomId = roomId;
     }
 
@@ -54,7 +45,7 @@ public class Receipt {
     public String toString() {
         return "Receipt{" +
                 "uid=" + uid +
-                ", r=" + this.roomId +
+                ", r=" + Arrays.toString(this.roomId) +
                 ", data='" + data + '\'' +
                 ", userId=" + userId +
                 '}';
