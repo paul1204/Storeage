@@ -1,0 +1,7 @@
+$ curl -X POST localhost:8080/book -H 'Content-type:application/json' -d '{"id": "Billy Bob", "rooms": "[{"id": 1, "name": "Small", "price": 12.99}]"}'
+
+
+
+
+curl -X POST localhost:8080/book -H 'Content-type:application/json' -d '{"id": 123,"idUser" : 9000,"rooms":[{"id": 1, "name": "Small", "price": 12.99}],"receipt": null,"cost" : 15.99}'
+

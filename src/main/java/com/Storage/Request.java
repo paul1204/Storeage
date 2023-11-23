@@ -67,15 +67,16 @@ public class Request {
         this.idUser = idUser;
     }
 
-    public Long[] getRoomId() {
-        return roomId;
+    public Long getRoomId(int id) {
+        return roomId[id];
     }
 
     public void setRoomId(Long[] roomId) {
         this.roomId = roomId;
     }
-    public Receipt generateReceipt(){
-        return receipt = new Receipt(this.idUser, this.roomId, this.cost);
+
+    public Receipt generateReceipt(Long userId, double cost){
+        return receipt = new Receipt(userId, this.roomId, cost);
     }
     @Override
 public String toString() {

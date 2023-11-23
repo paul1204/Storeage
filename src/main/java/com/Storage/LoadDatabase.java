@@ -15,10 +15,8 @@ class LoadDatabase {
     CommandLineRunner initDatabase(RoomRepository repository) {
 
         return args -> {
-
-
-            log.info("Preloading " + repository.save(new Room(Long.valueOf(1), "small", 12.99)));
-            log.info("Preloading " + repository.save(new Room(Long.valueOf(2), "small", 12.99)));
+            log.info("Preloading " + repository.save(new Room(Long.valueOf(1), "small", 12.99,10,10)));
+            log.info("Preloading " + repository.save(new Room(2L, "mmedium", 15.99,10,10)));
         };
     }
 }
