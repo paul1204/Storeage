@@ -12,27 +12,30 @@ public class Request {
     Long idUser;
     Long[] roomId;
 
-    @OneToOne
-    Receipt receipt;
+    //@OneToOne
+    Long receiptId;
 
     double cost;
+
+    int monthsToRent;
     Request(){}
-    public Request(Long id, Long idUser, Long[] roomID, double cost) {
+    public Request(Long id, Long idUser, Long[] roomID, double cost, int monthsToRent) {
         this.idd = id;
         this.idUser = idUser;
         //this.rooms = rooms;
         this.roomId  = roomId;
-        this.cost = cost;
+      //  this.cost = cost;
+        this.monthsToRent = monthsToRent;
     }
 
 
 
-    public Receipt getReceipt() {
-        return receipt;
+    public Long getReceipt() {
+        return receiptId;
     }
 
-    public void setReceipt(Receipt receipt) {
-        this.receipt = receipt;
+    public void setReceipt(Long receiptId) {
+        this.receiptId = receiptId;
     }
 
     public Long getIdd() {
@@ -76,15 +79,28 @@ public class Request {
     }
 
     public Receipt generateReceipt(Long userId, double cost){
-        return receipt = new Receipt(userId, this.roomId, cost);
+        Receipt r = new Receipt(userId, this.roomId, cost);
+        return r.generateReceipt();
     }
+    public double generateCost(double mCost, int mToRent){
+        return mCost * mToRent;
+    }
+
+    public int getMonthsToRent() {
+        return monthsToRent;
+    }
+
+    public void setMonthsToRent(int monthsToRent) {
+        this.monthsToRent = monthsToRent;
+    }
+
     @Override
 public String toString() {
     return "Request{" +
             "id=" + this.idd +
             ", idUser=" + this.idUser +
             ", roomId=" + Arrays.toString(this.roomId) +
-            ", receipt=" + this.receipt +
+            ", receipt=" + this.receiptId +
             ", cost=" + this.cost +
             '}';
 }

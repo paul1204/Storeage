@@ -12,6 +12,9 @@ public class Receipt {
     Long[] roomId;
     double cost;
 
+
+    String pin;
+
     public Receipt(Long idUser, Long[] roomId , double cost){
         this.userId = idUser;
        // this.r = r;
@@ -57,6 +60,15 @@ public class Receipt {
         this.userId = userId;
     }
 
+    public String getPin() {
+        return pin;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
+    }
+
+
     @Override
     public String toString() {
         return "Receipt{" +
@@ -64,6 +76,7 @@ public class Receipt {
                 ", r=" + Arrays.toString(this.roomId) +
                 ", data='" + data + '\'' +
                 ", userId=" + userId +
+                ", pin=" + pin +
                 '}';
     }
 }

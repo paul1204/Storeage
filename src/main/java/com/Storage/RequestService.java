@@ -25,12 +25,20 @@ public class RequestService {
 
     public Receipt makeReservation(Request req){
         System.out.println(req.toString());
-        Optional<Room> room = roomRepo.findById(req.getRoomId(0));
-        Room roo = room.orElseThrow();
-            if(checkSpots(roo)){
-                this.requestRepository.save(req);
-                Receipt receipt = req.generateReceipt(req.getIdUser(),roo.getPrice());
+        Optional<Room> roomOptional = roomRepo.findById(req.getRoomId(0));
+        Room room = roomOptional.orElseThrow();
+            if(checkSpots(room)){
+                double cost = req.generateCost(room.getPrice(), req.getMonthsToRent());
+                Receipt receipt = req.generateReceipt(req.getIdUser(),cost);
+                String pin = pinGen.generatePin(Long.toString(req.getIdUser()), Long.toString(req.getId()));
+                receipt.setPin(pin);
+                req.setReceipt(receipt.getUid());
                 receiptRepo.save(receipt);
+
+                this.requestRepository.save(req);
+                room.setAvailableRooms(room.getAvailableRooms() - 1);
+                System.out.println(room.getAvailableRooms());
+                roomRepo.save(room);
                 return receipt;
             }
         //Call the Room Repo. Make sure there is a vacant spot before making reservations...
