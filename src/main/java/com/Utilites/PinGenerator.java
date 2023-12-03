@@ -2,14 +2,22 @@ package com.Utilites;
 
 public class PinGenerator {
 
-    int pin;
+    String pin;
 
     public PinGenerator(){}
 
-    public String generatePin(){
-        pin = 1000;
-        return Integer.toString(this.pin);
+    public String generatePin(String userId, String requestId){
+        int userIdLength = userId.length();
+        pin = "";
+        pin += userId.charAt(userIdLength-1);
+        pin += userId.charAt(userIdLength-2);
+        pin += requestId.charAt(3);
+        pin += requestId.charAt(2);
+        return Integer.toString(Integer.parseInt(this.pin));
     }
 
+    public void clearPin(){
+        pin = "";
+    }
 
 }
