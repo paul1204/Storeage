@@ -11,25 +11,18 @@ public class Client {
 
     private @Id @GeneratedValue Long id;
     private String name;
-   private String driversLicenseNumber;
-    //Client can have a one-to-many relationship
-    //with the Storage Space they can reserve
-    //Room<Room> rooms;
+    private String driversLicenseNumber;
 
-
-
-  private  String phone;
-   private String firstName;
+    private  String phone;
+    private String firstName;
     private String lastName;
 
     Client(){}
 
 
-     Client(String name, String driversLicenseNumber,String phone){
-                String[] parts = name.split(" ");
-//                this.firstName = parts[0];
-//                this.lastName = parts[1];
-            this.name = name;
+     public Client(String firstName, String lastName,String driversLicenseNumber,String phone){
+                this.firstName = firstName;
+                this.lastName = lastName;
                 this.driversLicenseNumber = driversLicenseNumber;
                 this.phone = phone;
     }

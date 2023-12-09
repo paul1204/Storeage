@@ -16,7 +16,7 @@ class LoadDatabase {
 
         return args -> {
             log.info("Preloading " + repository.save(new Room(Long.valueOf(1), "small", 12.99,10,10)));
-            log.info("Preloading " + repository.save(new Room(2L, "mmedium", 15.99,10,10)));
+            log.info("Preloading " + repository.save(new Room(2L, "medium", 15.99,10,10)));
         };
     }
 }

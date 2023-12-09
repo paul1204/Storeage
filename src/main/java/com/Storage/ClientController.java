@@ -8,8 +8,6 @@ import java.util.List;
 
 @RestController
 class ClientController {
-    private final ClientRepository clientRepo;
-   // private final RequestRepository requestRepository;
 
     private final RequestService requestService;
     private final ClientService clientService;
@@ -17,9 +15,7 @@ class ClientController {
     PinGenerator pinGen = new PinGenerator();
 
 
-    ClientController(ClientRepository clientRepo, RequestService requestService, ClientService clientService) {
-        this.clientRepo = clientRepo;
-      //  this.requestRepository = requestRepository;
+    ClientController(RequestService requestService, ClientService clientService) {
         this.requestService = requestService;
         this.clientService = clientService;
     }

@@ -8,15 +8,17 @@ import java.util.List;
 @Service
 public class ClientService {
 
-    @Autowired
-    private ClientRepository clientRepo;
+    //@Autowired
+    private final ClientRepository clientRepo;
 
     public ClientService(ClientRepository clientRepo) {
         this.clientRepo = clientRepo;
     }
 
     public String signUp(Client c){
-        clientRepo.save(c);
+        Client newClient = new Client(c.getFirstName(), c.getLastName(), c.getDriversLicenseNumber(),c.getPhone());
+        clientRepo.save(newClient);
+        System.out.println(newClient.toString());
         return "Thanks for Signing up!";
     }
 
