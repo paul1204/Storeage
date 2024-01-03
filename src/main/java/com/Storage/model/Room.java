@@ -1,4 +1,4 @@
-package com.Storage;
+package com.Storage.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,15 +7,11 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Room {
-
-
     private @Id Long id;
     String name;
     double price;
     int totalRooms;
     int availableRooms;
-
-
 
     public Room(){}
 

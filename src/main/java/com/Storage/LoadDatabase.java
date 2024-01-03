@@ -1,5 +1,7 @@
 package com.Storage;
 
+import com.Storage.model.Room;
+import com.Storage.repository.RoomRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

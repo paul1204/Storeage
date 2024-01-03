@@ -1,6 +1,5 @@
-package com.Storage;
+package com.Storage.model;
 import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 
@@ -14,7 +13,7 @@ public class Receipt {
 
 
     String pin;
-
+    public Receipt(){}
     public Receipt(Long idUser, Long[] roomId , double cost){
         this.userId = idUser;
        // this.r = r;

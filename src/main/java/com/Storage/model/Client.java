@@ -1,6 +1,6 @@
-package com.Storage;
+package com.Storage.model;
 
-//import com.Storage.Room.Room;
+//import com.Storage.model.Room.Room;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -9,22 +9,26 @@ import java.util.Objects;
 @Entity
 public class Client {
 
-    private @Id @GeneratedValue Long id;
+    private @Id int id;
     private String name;
     private String driversLicenseNumber;
 
-    private  String phone;
+    private String phone;
     private String firstName;
     private String lastName;
 
+    @OneToMany
+    private List<Receipt> roomsBooked;
     Client(){}
 
 
-     public Client(String firstName, String lastName,String driversLicenseNumber,String phone){
+     public Client(int id, String firstName, String lastName,String driversLicenseNumber,String phone, List<Receipt> receipts){
+                this.id = id;
                 this.firstName = firstName;
                 this.lastName = lastName;
                 this.driversLicenseNumber = driversLicenseNumber;
                 this.phone = phone;
+                this.roomsBooked = receipts;
     }
 
     //Call Client Register, this will register the Client with the DB
@@ -33,7 +37,7 @@ public class Client {
         return Objects.hash(this.id, this.firstName, this.lastName, this.driversLicenseNumber, this.phone);
     }
 
-    public Long getId() {
+    public int getId() {
         return this.id;
     }
 
@@ -69,8 +73,12 @@ public class Client {
         this.lastName = lastName;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public List<Receipt> getReceipts() {
+        return roomsBooked;
+    }
+
+    public void addReceipt(Receipt r) {
+        this.roomsBooked.add(r);
     }
 
     @Override

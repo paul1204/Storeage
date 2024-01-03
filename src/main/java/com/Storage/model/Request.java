@@ -1,7 +1,7 @@
-package com.Storage;
+package com.Storage.model;
 
+import com.Storage.model.Receipt;
 import jakarta.persistence.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
 
